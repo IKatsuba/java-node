@@ -1,3 +1,5 @@
+ARG JAVA_NODE_VERSION
+
 FROM timbru31/java-node:$JAVA_NODE_VERSION
 
 RUN apt-get update && \
