@@ -13,5 +13,3 @@ RUN mkdir -p $ANDROID_HOME && \
     wget -q https://dl.google.com/android/repository/commandlinetools-linux-7302050_latest.zip -O $ANDROID_HOME/cmdline-tools.zip && \
     unzip -q $ANDROID_HOME/cmdline-tools.zip -d $ANDROID_HOME/ && \
     rm $ANDROID_HOME/cmdline-tools.zip
-
-ENTRYPOINT ["/bin/bash"]
