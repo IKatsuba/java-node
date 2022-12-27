@@ -10,8 +10,8 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node: [16]
-        java: [8, 8-jre]
+        node: [16.19.0]
+        openjdk: [8, 8-slim]
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -22,7 +22,8 @@ jobs:
           images: |
             katsuba/java-node
           tags: |
-            type=raw,value=${{ matrix.java }}-${{ matrix.node }}
+            type=raw,value=${{ matrix.openjdk }}-${{ matrix.node }}
+
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v2
       - name: Set up Docker Buildx
@@ -41,4 +42,5 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           build-args: |
-            JAVA_NODE_VERSION=${{ matrix.java }}-${{ matrix.node }}
+            OPENJDK_VERSION=${{ matrix.openjdk }}
+            NODE_VERSION=${{ matrix.node }}
