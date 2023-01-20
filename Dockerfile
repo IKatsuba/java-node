@@ -8,7 +8,7 @@ ARG NODE_VERSION
 RUN rm /bin/sh && ln -s /bin/bash /bin/sh
 
 RUN apt-get update && \
-    apt-get install curl wget zip unzip -y && \
+    apt-get install curl wget zip unzip dwarfdump -y && \
     apt-get -y autoclean;
 
 
