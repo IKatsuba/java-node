@@ -11,7 +11,7 @@ jobs:
     strategy:
       matrix:
         node: [16.19.0, 18.13.0]
-        openjdk: [8, 8-slim]
+        openjdk: [8, 8-jre]
     steps:
       - name: Checkout
         uses: actions/checkout@v3
