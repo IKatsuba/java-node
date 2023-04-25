@@ -29,15 +29,15 @@ ENV PATH=$NVM_DIR/versions/node/v${NODE_VERSION}/bin/:${PATH}
 ENV ANDROID_HOME=/opt/android
 
 RUN mkdir -p $ANDROID_HOME && \
-    wget -q https://dl.google.com/android/repository/commandlinetools-linux-7302050_latest.zip -O $ANDROID_HOME/cmdline-tools.zip && \
+    wget -q https://dl.google.com/android/repository/commandlinetools-linux-9477386_latest.zip -O $ANDROID_HOME/cmdline-tools.zip && \
     unzip -q $ANDROID_HOME/cmdline-tools.zip -d $ANDROID_HOME/ && \
     rm $ANDROID_HOME/cmdline-tools.zip
 
-RUN echo 'alias dwarfdump="llvm-dwarfdump"' >> ~/.bashrc
+RUN ln -s /usr/bin/llvm-dwarfdump /usr/bin/dwarfdump
 
 # confirm installation
 RUN node -v && \
     npm -v && \
     java -version && \
     $ANDROID_HOME/cmdline-tools/bin/retrace -version && \
-    llvm-dwarfdump --version
+    dwarfdump --version
